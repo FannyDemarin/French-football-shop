@@ -15,8 +15,9 @@ Throughout all these steps, I didn’t just “code blindly.” I focused on und
 
 The settings.py file controls the environment and behavior of the whole project. Without it, Django would not know how to run your app. In this configuration file we can found which apps are installed, the allowed hosts, debug mode, and security settings for example.
 
-Migration in Django is the process that makes sure the database structure follows the models I define. Whenever I add or change a field in models.py, I run makemigrations so Django prepares the update, and then migrate to apply it to the database. This way, I don’t have to edit the database manually. It keeps everything organized and makes it easy to track changes step by step.
+Migration in Django is the process that makes sure the database structure follows the defined models. Whenever I add or change a field in models.py, I run makemigrations so Django prepares the update, and then migrate to apply it to the database. This way, I don’t have to edit the database manually. It keeps everything organized and makes it easy to track changes step by step. Makemigrations only creates a migration explaining the changes we made to the models. Next, we need to use the migrate command to make the model effective.
+
 
 In my opinion, Django is chosen for learning because it has a clear structure and comes with many tools already included. However we still have to understand the main ideas of web development such as models, views, and templates and we can learn easier. At the same time, Django is widely used in real projects, so the things I practice here are directly useful if I want to build more advanced applications later.
 
-I think tutorial 1 was quite clear, but there was a lot to take in and I would prefer to have a short oral presentation of the key concepts before we start. It's just my personal opinion, but I find it difficult to understand new things by reading a document.
+I think tutorial 1 was quite clear, but there was a lot to take in and I would prefer to have a short oral presentation of the key concepts before we start. It's just my personal opinion, but I find it difficult to understand new things by reading a document. I would have preferred the MVT course to take place before tutorial 1.
