@@ -21,3 +21,22 @@ Migration in Django is the process that makes sure the database structure follow
 In my opinion, Django is chosen for learning because it has a clear structure and comes with many tools already included. However we still have to understand the main ideas of web development such as models, views, and templates and we can learn easier. At the same time, Django is widely used in real projects, so the things I practice here are directly useful if I want to build more advanced applications later.
 
 I think tutorial 1 was quite clear, but there was a lot to take in and I would prefer to have a short oral presentation of the key concepts before we start. It's just my personal opinion, but I find it difficult to understand new things by reading a document. I would have preferred the MVT course to take place before tutorial 1.
+
+/////
+
+ASSIGNMENT 3    
+
+Data delivery is essential because platforms rely on communication between different components (frontend, backend, databases, APIs). Without a way to transfer data, users couldn’t see updated content, send inputs, or interact with the system. Data delivery ensures synchronization, interaction, and real-time functionality.
+
+In my opinion, JSON is better than XML. Personally, I find JSON much easier to read and write because it looks very similar to Python dictionaries or JavaScript objects. It is also less verbose since it does not require opening and closing tags like XML. I prefer JSON because it feels more natural to use when working with APIs, especially in web development. JSON is also faster to parse and is directly supported by most modern programming languages. In addition during my previous internship, everyone advises me to use JSON file.
+So I think that JSON is much more popular than XML for all theses reasons.
+
+The is_valid() method is essential because it ensures that the data submitted through a form is correct before we process it. For example, if a user tries to submit an empty required field or enters text where only numbers are expected, is_valid() will detect that and prevent errors in the application. Personally, I think this makes development much safer and cleaner, because it avoids having to manually check every input. It gives me confidence that the data I save into the database is reliable.
+
+I think the csrf_token is very important because it adds an extra layer of protection against Cross-Site Request Forgery (CSRF) attacks. Basically, it makes sure that a form submission is really coming from the legitimate user on the site, and not from a malicious third-party page. Without it, an attacker could trick someone into submitting hidden forms that perform dangerous actions, like changing account settings or making unwanted purchases. For me, the csrf_token is a simple but powerful way to secure forms and prevent these kinds of attacks.
+
+At each step, I carefully checked that everything was working before moving on to the next one. I paid close attention to following the tutorial so I wouldn’t miss any important detail, and I adapted the code meticulously to fit my own project, the Football Shop. Along the way, I faced some display issues, for example the release year was showing as day-month-year instead of only the year. To fix this, I modified the model and had to redo the migrations properly. I also made a mistake when creating one product, so I decided to create an admin account in Django in order to correct and manage the data. At that point, I realized I didn’t know another way to edit my data except through the /admin URL, so using the admin site was very helpful.
+
+I would have appreciated having a bit more context in the assignment instructions instead of only receiving a checklist.
+I really appreciate the fact that we can always contact the TAs in case of doubt or confusion. Their availability makes the process much easier and more reassuring.
+

@@ -18,10 +18,14 @@ class Product(models.Model):
     is_featured = models.BooleanField(default=False)
     item_views = models.PositiveIntegerField(default=0)
     brand = models.CharField(max_length=255)
-    release_year = models.DateField(null=True, blank=True)
+    release_year = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        help_text="Year of product release (e.g. 2024)"
+    )
 
     def __str__(self):
-        return self.title
+        return self.name
 
     @property
     def is_item_hot(self):
