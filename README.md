@@ -40,3 +40,12 @@ At each step, I carefully checked that everything was working before moving on t
 I would have appreciated having a bit more context in the assignment instructions instead of only receiving a checklist.
 I really appreciate the fact that we can always contact the TAs in case of doubt or confusion. Their availability makes the process much easier and more reassuring.
 
+<img width="959" height="503" alt="postman json id" src="https://github.com/user-attachments/assets/63bf8503-7b0e-4301-8ec0-07b5237dbcad" />
+<img width="959" height="501" alt="postman json" src="https://github.com/user-attachments/assets/faab7575-1455-4002-a9e0-9229660b30d0" />
+<img width="959" height="503" alt="postman XML id" src="https://github.com/user-attachments/assets/caf2e187-51cd-4872-a911-f23c635c8f4a" />
+<img width="958" height="500" alt="postman xml" src="https://github.com/user-attachments/assets/5fd4157a-2a17-49c1-b1a5-ef67bfe1b9d2" />
+
+
+
+
+
