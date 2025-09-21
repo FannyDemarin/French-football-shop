@@ -47,5 +47,23 @@ I really appreciate the fact that we can always contact the TAs in case of doubt
 
 
 
+/////
 
+ASSIGNMENT 4  
 
+Django provides the built-in AuthenticationForm to handle user login. It automatically validates a username and password, checks if the account exists and is active, and returns an authenticated user object if the credentials are correct. Its main advantage is that it is fully integrated with Django’s authentication system and saves development time. However, it is limited in flexibility, since it is tied to Django’s default user model and requires customization when using alternative login methods such as email-only authentication.
+
+Authentication is the process of verifying a user’s identity, for example by checking their username and password. Authorization, on the other hand, defines what resources or actions the authenticated user is allowed to access. In Django, authentication is managed by the django.contrib.auth module through functions like authenticate() and login(). Authorization is handled by Django’s permission system, which assigns specific permissions and group-based roles to users, along with special flags like is_staff or is_superuser.
+
+Cookies and sessions are two mechanisms used to maintain state in web applications. Cookies store data directly in the client’s browser, making them lightweight and persistent, but they are limited in size and exposed to security risks. Sessions store data on the server and only send a session ID through a cookie, which is more secure and allows larger or more complex data to be managed. However, sessions add extra server load and require management of expired session data. Django uses a combination of both by storing session data server-side and linking it to the client through a session cookie.
+
+Cookies are not secure by default and can be vulnerable to attacks such as session hijacking, cross-site scripting (XSS), or cross-site request forgery (CSRF). To mitigate these risks, Django stores sensitive session data on the server and only transmits a session ID in the cookie. It also provides built-in protections such as HttpOnly to prevent JavaScript access to cookies, Secure to enforce HTTPS-only transmission, and CSRF protection through unique tokens in forms. These measures make cookie usage safer in Django applications.
+
+How I implemented the checklist above step-by-step : 
+
+- I modified the Product model so that it is directly linked to Django’s built-in User model using a ForeignKey relationship. This makes it possible to associate each product with its owner and to filter products easily depending on the logged-in user. This design also ensures that if a user is deleted, all of their products are automatically removed, keeping the database consistent.
+- For registration, I used Django’s UserCreationForm, which automatically handles validation of standard fields. After a new user registers, I log them in immediately to create a smooth experience. I also set a last_login cookie to record the login time
+- For login, I used Django’s AuthenticationForm to check credentials. Before logging the user in, I retrieved the previous last_login value from the database and stored it in a cookie. This way, the user can see the timestamp of their previous login on the homepage. Once the login is confirmed, Django automatically updates the last_login field in the database.
+- On the homepage, I implemented a check: if the user is logged in, the page displays their username, their personal products, and the last_login value from the cookie. If the user is not logged in, the page only shows links to the login and registration pages. This logic confirms that products are correctly linked to their owners and that the cookie mechanism is working as intended.
+- I created two different user accounts and added a total of six products, named simply Product1 through Product6 to keep them as dummy data. To test image functionality while still using placeholders, I assigned simple placeholder images to the products. I then verified that depending on the active session, each user could only see their own products, which confirms that the “author of a product” feature works correctly.
+- Finally, I tested the full workflow step by step: registering a user, logging in, checking the homepage display, logging out, and then logging in with the second account. At each step, I verified that the last_login cookie was properly updated and that only the correct user’s products were displayed.
