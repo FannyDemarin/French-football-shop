@@ -1,5 +1,5 @@
 import datetime
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from main.models import Product
@@ -73,7 +73,13 @@ def add_product(request):
         product_entry.save()
         return redirect('main:show_main')
 
-    context = {'form': form}
+    context = {
+        'form': form,
+        'name': request.user.username if request.user.is_authenticated else 'Guest',
+        'npm': '2506561542',  
+        'class': 'KKI',
+    }
+
     return render(request, "create_product.html", context)
 
 @login_required(login_url='/login')
@@ -82,9 +88,61 @@ def show_product(request, product_id):
     product.increment_views()
 
     context = {
-        'product': product
+        'product': product,
+        'name': request.user.username if request.user.is_authenticated else 'Guest',
+        'npm': '2506561542',  
+        'class': 'KKI',
     }
     return render(request, "product_detail.html", context)
+
+def edit_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    form = ProductForm(request.POST or None, instance=product)
+    if form.is_valid() and request.method == 'POST':
+        form.save()
+        return redirect('main:show_main')
+
+    context = {
+        'form': form,
+        'name': request.user.username if request.user.is_authenticated else 'Guest',
+        'npm': '2506561542',  
+        'class': 'KKI',
+    }
+
+    return render(request, "edit_product.html", context)
+
+def delete_product(request, id):
+    product = get_object_or_404(Product, pk=id)
+    product.delete()
+    return HttpResponseRedirect(reverse('main:show_main'))
+
+@login_required(login_url='/login')
+def toggle_favourites(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.user in product.favourites.all():
+        product.favourites.remove(request.user)
+        is_favourite = False
+    else:
+        product.favourites.add(request.user)
+        is_favourite = True
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({'is_favourite': is_favourite})
+    
+    return redirect('main:show_product', product_id=product.id)
+
+@login_required(login_url='/login')
+def my_favourites(request):
+    favourites = request.user.favourites.all()
+
+    context = {
+        'favourites': favourites,
+        'name': request.user.username,
+        'npm': '2506561542',
+        'class': 'KKI',
+    }
+
+    return render(request, "my_favourites.html", context)
 
 def show_json(request):
     product_list = Product.objects.all()

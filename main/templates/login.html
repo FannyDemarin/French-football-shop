@@ -1,32 +1,106 @@
 {% extends 'base.html' %}
 
 {% block meta %}
-<title>Login</title>
+<title>Login - French Football shop</title>
 {% endblock meta %}
 
 {% block content %}
-<div class="login">
-  <h1>Login</h1>
+<div class="bg-light w-100 min-vh-100 d-flex align-items-center justify-content-center p-4">
+  <div class="col-12 col-md-8 col-lg-5">
+    <div class="card shadow-sm border">
+      <div class="card-body p-4 p-sm-5">
+        <!-- Header -->
+        <div class="text-center mb-4">
+          <h1 class="h4 fw-bold text-dark mb-2">Sign In</h1>
+          <p class="text-muted">Welcome back to French Football Shop</p>
+        </div>
 
-  <form method="POST" action="">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-      <tr>
-        <td></td>
-        <td><input class="btn login_btn" type="submit" value="Login" /></td>
-      </tr>
-    </table>
-  </form>
+        <!-- Form Errors Display -->
+        {% if form.non_field_errors %}
+          <div class="mb-3">
+            {% for error in form.non_field_errors %}
+              <div class="alert alert-danger small mb-2">
+                {{ error }}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
 
-  {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %} Don't have an account yet?
-  <a href="{% url 'main:register' %}">Register Now</a>
+        {% if form.errors %}
+          <div class="mb-3">
+            {% for field, errors in form.errors.items %}
+              {% if field != '__all__' %}
+                {% for error in errors %}
+                  <div class="alert alert-danger small mb-2">
+                    <strong>{{ field|title }}:</strong> {{ error }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <!-- Form -->
+        <form method="POST" action="">
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label for="username" class="form-label small fw-medium">Username</label>
+            <input 
+              type="text" 
+              class="form-control" 
+              id="username" 
+              name="username" 
+              placeholder="Enter your username" 
+              required>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label small fw-medium">Password</label>
+            <input 
+              type="password" 
+              class="form-control" 
+              id="password" 
+              name="password" 
+              placeholder="Enter your password" 
+              required>
+          </div>
+
+          <button type="submit" class="btn btn-darkblue w-100 fw-medium py-2">
+            Sign In
+          </button>
+        </form>
+
+        <!-- Messages Display -->
+        {% if messages %}
+          <div class="mt-4">
+            {% for message in messages %}
+              <div class="alert 
+                {% if message.tags == 'success' %}
+                  alert-success
+                {% elif message.tags == 'error' %}
+                  alert-danger
+                {% else %}
+                  alert-secondary
+                {% endif %}
+                small mb-2">
+                {{ message }}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <!-- Register Link -->
+        <div class="mt-4 text-center border-top pt-3">
+          <p class="text-muted small mb-0">
+            Don't have an account?
+            <a href="{% url 'main:register' %}" class="text-darkblue fw-medium">
+              Register Now
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
 {% endblock content %}

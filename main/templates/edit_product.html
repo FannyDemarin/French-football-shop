@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block meta %}
-<title>Add Product - French Football Shop</title>
+<title>Edit Product - French Football Shop</title>
 {% endblock meta %}
 
 {% block content %}
@@ -20,7 +22,7 @@
           </a>
         </div>
 
-        <h1 class="h5 fw-bold text-dark mb-4">Add New Product</h1>
+        <h1 class="h5 fw-bold text-dark mb-4">Edit Product</h1>
 
         <form method="POST">
           {% csrf_token %}
@@ -44,7 +46,7 @@
               Cancel
             </a>
             <button type="submit" class="btn btn-darkblue w-100 order-1 order-sm-2">
-              Publish Product on the Shop
+              Save Changes
             </button>
           </div>
         </form>

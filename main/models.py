@@ -25,6 +25,7 @@ class Product(models.Model):
         blank=True,
         help_text="Year of product release (e.g. 2024)"
     )
+    favourites = models.ManyToManyField(User, related_name="favourites", blank=True)
 
     def __str__(self):
         return self.name

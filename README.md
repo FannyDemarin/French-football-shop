@@ -67,3 +67,52 @@ How I implemented the checklist above step-by-step :
 - On the homepage, I implemented a check: if the user is logged in, the page displays their username, their personal products, and the last_login value from the cookie. If the user is not logged in, the page only shows links to the login and registration pages. This logic confirms that products are correctly linked to their owners and that the cookie mechanism is working as intended.
 - I created two different user accounts and added a total of six products, named simply Product1 through Product6 to keep them as dummy data. To test image functionality while still using placeholders, I assigned simple placeholder images to the products. I then verified that depending on the active session, each user could only see their own products, which confirms that the “author of a product” feature works correctly.
 - Finally, I tested the full workflow step by step: registering a user, logging in, checking the homepage display, logging out, and then logging in with the second account. At each step, I verified that the last_login cookie was properly updated and that only the correct user’s products were displayed.
+
+
+/////
+
+ASSIGNMENT 5 
+
+- CSS Selector priority : 
+In CSS, it is common for the same HTML element to be targeted by several different selectors at once. For example, a paragraph might be affected by a general rule for all <p> elements, by a class applied to it, and also by an ID or even an inline style. Since these rules can overlap, the browser needs a hierarchy to decide which one is applied.
+
+This hierarchy is called specificity and it gives different “weights” to selectors in this order :
+
+1. Inline styles
+2. ID selectors
+3. Class selectors
+4. Element selectors
+
+If two rules have the same specificity, the browser applies the one that is written last in the stylesheet, meaning that the order of the code also matters.
+
+Finally, there is the special case of !important. A declaration with !important overrides all others, except if there is another !important in conflict. In that case, the normal specificity rules are used again.
+
+- Responsive Design : 
+
+• Why is responsive design important in web application development?
+Responsive design is very important in web application because we can't predict on wich device the user will open the app. Indeed, the web is available on computers, on tablets, and smartphones, and our design has to be adapted to all of these devices. A web application designed only for computers may be distorded, too small, incovenient and unusable on a mobile phone since the size and orientation of the screen are different. Event the way we interact with the device is different. That's why the concept of responsive apps exists. Elements like layout, images and text are adjusted automatically to the user's device. This provides a consistent and optimized user experience across all devices, leading to better user experience. It also increases website visibility to a wider audience and reduces development and maintenance costs by eliminating the need for separate mobile and desktop versions of a site. 
+
+• Provide examples of applications that have and haven't implemented responsive design & Explain the reasons behind your examples :
+An application that has implemented responsive design is Instagram. Its features, such as Stories, adapt automatically to different devices. On a smartphone, Stories are displayed vertically to match the natural way people hold their phones, filling the entire screen for an immersive experience. On a tablet or desktop, the same content is adjusted: the story may not cover the full width, but Instagram centers it and adapts the margins and navigation controls so it remains readable and usable. This ensures that, regardless of the screen size or orientation, the visual quality and user experience stay consistent.
+
+In contrast, during an internship, I developed an internal payroll web application for employees. Because it was intended to be used only on desktop computers, I initially created non-responsive prototypes. At that time, I lacked both the time and the technical knowledge to implement responsive design. However, when I later resized the browser window, I noticed major display issues, which made me realize how indispensable responsive design is, even in applications primarily targeted at desktop users.
+
+- Box Model : 
+The difference between margin, border, and padding lies in the way they define spacing in relation to an element and its content.
+
+    - Margin is the space outside an element. It creates distance between the element and surrounding elements on the page. Adjusting the margin does not affect the element’s size but changes its position relative to others.
+    - Border is the line drawn around the element. It sits between the margin and the padding and can have different thicknesses, colors, and styles such as solid, dashed, or dotted.
+    - Padding is the space inside the element, between the content and the border. Increasing the padding pushes the content inward and makes the element itself larger without affecting the distance to other elements.
+
+<img width=auto alt="css model" src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F18sfy7anxl7uj5soub2i.png" />
+
+To implement them, CSS properties such as margin, border, and padding are used. For example, margin: 20px; adds space around the element, border: 2px solid black; adds a black border around it, and padding: 15px; adds space inside the element between its content and the border.
+
+- Layout Systems : 
+Flexbox is a CSS layout system for arranging elements in a single row or column. It allows items to grow, shrink, and wrap to fit the available space, making it ideal for navigation bars or lists. 
+Grid layout is used for two-dimensional layouts, controlling both rows and columns at the same time. It is useful for complex structures like dashboards or image galleries. Flexbox is best for one-dimensional, flexible alignment, while Grid provides precise control over both horizontal and vertical placement of elements. 
+
+
+- Implementation Steps : 
+
+First, I implemented the core functionality, adding the ability to delete and edit products and testing them carefully. For the design, I decided to use Bootstrap instead of Tailwind (used in the tutorial) so I could gain experience with both frameworks. I explored the Bootstrap website to see examples and choose components I liked, aiming for consistency across all pages. I also looked at other websites to draw inspiration for colors, layouts, and card designs, so that the overall application felt coherent and visually appealing. For the product list page, I made it responsive and created custom product cards with Edit and Delete buttons. I also designed a responsive navbar.
